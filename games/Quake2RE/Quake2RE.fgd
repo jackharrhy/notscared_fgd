@@ -533,6 +533,24 @@
     pausetime(float) : "Additional delay for START_ON timers"
 ]
 
+@SolidClass base(EditorFlags, Targetable, EWT_base_BModel) color(0 204 128) = func_vehicle : "Player-controlled vehicle. Players mount by pressing USE while near the move_origin position."
+[
+    spawnflags(Flags) =
+    [
+        4 : "Block Stops" : 0
+    ]
+    speed(float) : "Max speed (units/sec)" : "200"
+    accel(float) : "Acceleration" : "200"
+    decel(float) : "Deceleration" : "200"
+    mass(integer) : "Vehicle mass" : 2000
+    radius(float) : "Turning radius" : "256"
+    dmg(integer) : "Explosion damage (if health > 0)" : 0
+    health(integer) : "Health (0 = invulnerable)" : 0
+    message(string) : "Message when player mounts"
+    move_origin(vector) : "Driver offset (XYZ from vehicle origin)"
+    deathtarget(target_destination) : "Target to fire on destruction"
+]
+
 // 0219 - added "team" key
 @SolidClass base(EditorFlags, Targetable, UseTargets, Teamable, EWT_base_BModel, FX) color(0 128 204) = func_train : "Moving platform"
 [
