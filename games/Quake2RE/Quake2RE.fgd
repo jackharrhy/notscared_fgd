@@ -1531,6 +1531,13 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
     ]
 ]
 
+@SolidClass base(EditorFlags, Targetable) color(255 128 0) = trigger_server_portal : "Portal to another server. When touched, client connects to target server."
+[
+    server_address(string) : "Server Address" : "" : "IP:Port of target server (e.g. 192.168.1.50:27910)"
+    message(string) : "Message" : "" : "Message shown to player before transfer"
+    wait(float) : "Cooldown" : "2" : "Seconds before same player can use again"
+]
+
 @SolidClass base(func_door_secret) color(0 128 204) = func_door_secret2 : "Secret Door (Rogue)" []
 
 @SolidClass base(EditorFlags, Targetable, EWT_base_BModel) color(0 128 204) = func_force_wall : "Force Wall"
