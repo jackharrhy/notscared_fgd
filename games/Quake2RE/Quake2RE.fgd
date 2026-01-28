@@ -1531,9 +1531,9 @@ spawnflags == 0 -> 	{"path": "models/ctf/banner/small.md2", "scale":"1.0"},
     ]
 ]
 
-@SolidClass base(EditorFlags, Targetable) color(255 128 0) = trigger_server_portal : "Portal to another server. When touched, client connects to target server."
+@SolidClass base(EditorFlags, Targetable) color(255 128 0) = trigger_server_portal : "Portal to another server. When touched, player is transferred to target backend server."
 [
-    server_address(string) : "Server Address" : "" : "IP:Port of target server (e.g. 192.168.1.50:27910)"
+    target_server(string) : "Target Server" : "" : "Name of the backend server (e.g. hub, test1)"
     message(string) : "Message" : "" : "Message shown to player before transfer"
     wait(float) : "Cooldown" : "2" : "Seconds before same player can use again"
 ]
