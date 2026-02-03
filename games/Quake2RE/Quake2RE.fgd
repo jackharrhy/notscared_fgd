@@ -344,6 +344,16 @@
 // get an error message and the areaportal will not work
 @SolidClass base(EditorFlags, Targetable) = func_areaportal : "Area portal (Vis blocker)" []
 
+@SolidClass base(EditorFlags, Targetable) color(0 128 204) = func_conveyor : "Conveyor belt. Brush surface needs a current content flag (current_0, current_90, etc) to set direction."
+[
+    spawnflags(Flags) =
+    [
+        1 : "Start On" : 0
+        2 : "Toggle" : 0
+    ]
+    speed(float) : "Speed" : "100"
+]
+
 @SolidClass base(EditorFlags, Angleable, UseTargets, Targetable, EWT_base_BModel, BmodelAnim, BmodelSounds) color(0 128 204) = func_button : "Button"
 [
     speed(float) : "Speed" : "40"
@@ -807,6 +817,15 @@ misc_satellite_dish : "Satellite Dish"
     ]
 ]
 
+@PointClass base(EditorFlags, Targetable, Target) color(255 128 0) size(-16 -16 -24, 16 16 32) model({ "path": ":models/monsters/insane/tris.md2" }) = misc_actor : "Scripted actor. Must be targeted to activate. Uses target_actor waypoints."
+[
+    spawnflags(Flags) =
+    [
+        1 : "Ambush" : 0
+        2 : "Trigger Spawn" : 0
+    ]
+]
+
 @PointClass base(Monsters) model({ "path": ":models/monsters/berserk/tris.md2" }) = monster_berserk : "Berserker" [
     spawnflags(Flags) =
     [
@@ -1200,6 +1219,23 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
 
     speed(float) : "Severity of quake" : "200"
     count(float) : "Duration" : "5"
+]
+
+@PointClass base(EditorFlags, Targetable, Target) color(255 128 0) size(-8 -8 -8, 8 8 8) = target_actor : "Waypoint for misc_actor scripted sequences"
+[
+    spawnflags(Flags) =
+    [
+        1 : "Jump" : 0 : "Jump in set direction upon reaching this target"
+        2 : "Shoot" : 0 : "Take a single shot at the pathtarget"
+        4 : "Attack" : 0 : "Attack pathtarget until it or actor is dead"
+        16 : "Hold" : 0
+        32 : "Brutal" : 0
+    ]
+    pathtarget(target_destination) : "Action target" : : "Target of any action to be taken at this point"
+    wait(float) : "Pause time" : : "Amount of time actor should pause at this point"
+    message(string) : "Speak message" : : "Actor will say this to the player"
+    speed(float) : "Jump speed forward" : "200" : "For JUMP only: speed thrown forward"
+    height(float) : "Jump height" : "200" : "For JUMP only: speed thrown upwards"
 ]
 
 @PointClass base(EditorFlags, Targetable, UseTargets) color(255 0 0) size(-8 -8 -8, 8 8 8) model({"path": "tb/explosion.webp", "scale": .08}) = target_explosion : "Explosion"
