@@ -145,6 +145,10 @@
 	team(string) : "Team identifier"
 ]
 
+// Base class for triggers that use InitTrigger and need directional angles
+// Angles are converted to movedir for push/jump direction
+@baseclass base(EditorFlags, Angleable) color(128 128 128) = Trigger []
+
 // Entity supports brush model animations
 @baseclass = BmodelAnim [
 	bmodel_anim_start(integer) : "Start frame of animation"
@@ -1398,7 +1402,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     item(string) : "Item classname" : "key_blue_key"
 ]
 
-@SolidClass base(Angleable, EditorFlags, Targetable) color(128 128 128) = trigger_monsterjump : "Makes monsters jump"
+@SolidClass base(Trigger, Targetable) = trigger_monsterjump : "Makes monsters jump. Angles set the jump direction."
 [
     spawnflags(Flags) =
     [
@@ -1436,7 +1440,7 @@ Set 'map' value to 'mapname$playername' where playername equals the targetname o
     wait(float) : "Seconds between triggers" : "0"
 ]
 
-@SolidClass base(EditorFlags) color(128 128 128) = trigger_push : "Push trigger"
+@SolidClass base(Trigger, Targetable) = trigger_push : "Push trigger. Angles set the push direction."
 [
     spawnflags(Flags) =
     [
